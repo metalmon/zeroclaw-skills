@@ -1,6 +1,6 @@
 ---
 name: office-documents
-description: REQUIRED before touching any Microsoft Office file (.docx, .xlsx, .pptx, .doc, .xls, .ppt — Word, Excel, PowerPoint). If the user sends, attaches, or asks you to open/read/parse/extract/summarize such a file, you MUST FIRST call read_skill with name 'office-documents' and follow its recipe before doing anything else. Do NOT call file_read on an Office file directly — its bytes are binary, they flood the context and stall generation, and you will NOT get readable text. The skill explains how to extract clean text/Markdown via the office_read tool and execute_pipeline.
+description: REQUIRED before touching any Microsoft Office file (.docx, .xlsx, .pptx, .doc, .xls, .ppt — Word, Excel, PowerPoint). When the user sends, attaches, or asks you to open/read/parse/extract/summarize such a file, follow this skill's recipe (preloaded in the instructions below): extract clean text/Markdown by chaining file_read → office_read through execute_pipeline with "result": "last". Do NOT call file_read on an Office file directly and inline its bytes — they are binary, they flood the context and stall generation, and you will NOT get readable text that way.
 ---
 
 # Reading Office documents
